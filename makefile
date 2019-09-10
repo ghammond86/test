@@ -1,8 +1,6 @@
-MYFLAGS = -fprofile-arcs -ftest-coverage
-LIBS += -lgcov
 
 test : test.o
-	gfortran -o test test.o ${LIBS}
+	gfortran -o test test.o -lgcov
 
 %.o : %.F90
-	gfortran -c ${MYFLAGS} -o $@ $<
+	gfortran -c -fprofile-arcs -ftest-coverage -o $@ $<

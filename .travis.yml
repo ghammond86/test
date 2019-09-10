@@ -1,0 +1,21 @@
+language:
+
+before_script:
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
+dist: trusty
+
+compiler:
+  - gcc
+
+before_install:
+  -sudo apt-get install -y gfortran
+
+install:
+
+script:
+  - make test
+  - test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
